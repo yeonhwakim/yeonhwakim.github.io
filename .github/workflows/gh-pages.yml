@@ -3,26 +3,23 @@ name: github pages
 on:
   push:
     branches:
-      - main # Set a branch name to trigger deployment
+      - main
 
 jobs:
-  deploy:
-    runs-on: ubuntu-18.04
+  build:
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
       - name: Setup Node
         uses: actions/setup-node@v1
         with:
           node-version: '12.x'
-      - name: Build
+      - name: build
         run: |
           npm ci
           npm run build -- --prefix-paths
-
       - uses: peaceiris/actions-gh-pages@v2
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUBTOKEN }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUBTOKEN }}
           PUBLISH_BRANCH: gh-pages
-          publish_dir: ./docs
+          PUBLISH_DIR: ./docs

@@ -5,4 +5,4 @@ category: YEONHWA
 draft: false
 ---
 
-<strong style="font-size: 28px">YEONHWA SAMPLE1 </strong>
+<strong style="font-size: 28px">YEONHWA SAMPLE1</strong>
